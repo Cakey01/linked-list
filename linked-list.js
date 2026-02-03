@@ -59,16 +59,28 @@ class LinkedList {
   }
 
   tail() {
+    if (!this.listHead) {
+      return undefined;
+    }
     let current = this.listHead;
     while (current.nextNode != null) {
       current = current.nextNode;
     }
-    return current || undefined;
+    return current;
   }
 
   at(index) {
-    index = index - 1;
-    return index
+    let listIndex = 0;
+    let current = this.listHead;
+
+    while (listIndex < index) {
+      current = current.nextNode;
+      if (!current) {
+        return undefined;
+      }
+      listIndex++;
+    }
+    return current;
   }
 
   pop() {
@@ -108,7 +120,7 @@ console.log('list:', list);
 console.log('head:', list.head())
 console.log('size:', list.size())
 console.log('tail:', list.tail())
-console.log('at:', list.at(1))
+console.log('at:', list.at(0))
 
 
 console.log('done')
