@@ -120,7 +120,19 @@ class LinkedList {
   }
 
   toString() {
+    let current = this.listHead;
+    let string = '';
 
+    if (current === null) {
+      return string;
+    }
+
+    while (current != null) {
+      string += `( ${current.value} ) -> `;
+      current = current.nextNode;
+    }
+    string += 'null';
+    return string;
   }
 
   insertAt(index, ...values) {
@@ -147,6 +159,7 @@ console.log('tail:', list.tail())
 console.log('at:', list.at(0))
 console.log('contains:', list.contains('fish'))
 console.log('findIndex:', list.findIndex('leek'))
+console.log('toString:', list.toString())
 
 
 console.log('done')
