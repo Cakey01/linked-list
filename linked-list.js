@@ -106,7 +106,17 @@ class LinkedList {
   }
 
   findIndex(value) {
-
+    let current = this.listHead;
+    let index = 0;
+    
+    while (current != null) {
+      if (current.value === value) {
+        return index;
+      }
+      current = current.nextNode;
+      index++;
+    }
+    return -1;
   }
 
   toString() {
@@ -136,6 +146,7 @@ console.log('size:', list.size())
 console.log('tail:', list.tail())
 console.log('at:', list.at(0))
 console.log('contains:', list.contains('fish'))
+console.log('findIndex:', list.findIndex('leek'))
 
 
 console.log('done')
