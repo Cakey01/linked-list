@@ -59,11 +59,16 @@ class LinkedList {
   }
 
   tail() {
-
+    let current = this.listHead;
+    while (current.nextNode != null) {
+      current = current.nextNode;
+    }
+    return current || undefined;
   }
 
   at(index) {
-
+    index = index - 1;
+    return index
   }
 
   pop() {
@@ -102,6 +107,8 @@ list.prepend('lizard')
 console.log('list:', list);
 console.log('head:', list.head())
 console.log('size:', list.size())
+console.log('tail:', list.tail())
+console.log('at:', list.at(1))
 
 
 console.log('done')
