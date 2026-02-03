@@ -84,7 +84,13 @@ class LinkedList {
   }
 
   pop() {
-
+    if (!this.listHead) {
+      return undefined;
+    }
+    
+    const popNode = this.listHead;
+    this.listHead = popNode.nextNode;
+    return popNode;
   }
 
   contains(value) {
@@ -121,6 +127,8 @@ console.log('head:', list.head())
 console.log('size:', list.size())
 console.log('tail:', list.tail())
 console.log('at:', list.at(0))
+console.log('pop:', list.pop())
+console.log('popped list:', list)
 
 
 console.log('done')
