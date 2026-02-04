@@ -55,7 +55,7 @@ class LinkedList {
   }
 
   head() {
-    return this.listHead || undefined;
+    return this.listHead ? this.listHead.value : undefined;
   }
 
   tail() {
@@ -131,7 +131,7 @@ class LinkedList {
       string += `( ${current.value} ) -> `;
       current = current.nextNode;
     }
-    
+
     string += "null";
     return string;
   }
@@ -187,7 +187,7 @@ console.log("at:", list.at(0));
 console.log("contains:", list.contains("fish"));
 console.log("findIndex:", list.findIndex("leek"));
 console.log("toString:", list.toString());
-list.removeAt(3);
+list.removeAt(2);
 console.log("toString:", list.toString());
 
 console.log("done");
