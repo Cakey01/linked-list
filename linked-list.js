@@ -136,21 +136,39 @@ class LinkedList {
   }
 
   insertAt(index, ...values) {
+    if (index < 0 || index > this.size()) {
+      throw new RangeError('Index is out of bounds');
+    }
 
+    let previous = index === 0 ? null : this.at(index - 1);
+    let next = this.at(index);
+
+    for (let value of values) {
+      const insert = new Node(value);
+
+      if (previous === null) {
+        this.listHead = insert;
+      } else {
+        previous.nextNode = insert;
+      }
+      insert.nextNode = next;
+      previous = insert;
+    }
   }
 
   removeAt(index) {
-
+    if (index < 0 || index > this.size()) {
+      throw new RangeError('Index is out of bounds');
+    }
   }
 
 }
 
 const list = new LinkedList();
 
-list.append('cat');
-list.append('dog');
-list.append('fish');
-list.prepend('lizard')
+list.append('1');
+list.append('2');
+list.append('3');
 
 console.log('list:', list);
 console.log('head:', list.head())
@@ -160,6 +178,9 @@ console.log('at:', list.at(0))
 console.log('contains:', list.contains('fish'))
 console.log('findIndex:', list.findIndex('leek'))
 console.log('toString:', list.toString())
+list.insertAt(1, '10')
+console.log('toString:', list.toString())
+
 
 
 console.log('done')
