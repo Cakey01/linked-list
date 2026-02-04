@@ -172,22 +172,3 @@ class LinkedList {
     }
   }
 }
-
-const list = new LinkedList();
-
-list.append("1");
-list.append("2");
-list.append("3");
-
-console.log("list:", list);
-console.log("head:", list.head());
-console.log("size:", list.size());
-console.log("tail:", list.tail());
-console.log("at:", list.at(0));
-console.log("contains:", list.contains("fish"));
-console.log("findIndex:", list.findIndex("leek"));
-console.log("toString:", list.toString());
-list.removeAt(2);
-console.log("toString:", list.toString());
-
-console.log("done");
