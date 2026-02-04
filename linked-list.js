@@ -66,7 +66,7 @@ class LinkedList {
     while (current.nextNode != null) {
       current = current.nextNode;
     }
-    return current;
+    return current.value;
   }
 
   at(index) {
