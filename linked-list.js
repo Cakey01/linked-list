@@ -1,4 +1,4 @@
-import Node from './node.js';
+import Node from "./node.js";
 
 class LinkedList {
   constructor() {
@@ -27,7 +27,7 @@ class LinkedList {
   prepend(value) {
     // create node
     const node = new Node(value);
-    
+
     // if there is no head
     if (!this.listHead) {
       this.listHead = node;
@@ -87,7 +87,7 @@ class LinkedList {
     if (!this.listHead) {
       return undefined;
     }
-    
+
     const popNode = this.listHead;
     this.listHead = popNode.nextNode;
     return popNode;
@@ -108,7 +108,7 @@ class LinkedList {
   findIndex(value) {
     let current = this.listHead;
     let index = 0;
-    
+
     while (current != null) {
       if (current.value === value) {
         return index;
@@ -121,7 +121,7 @@ class LinkedList {
 
   toString() {
     let current = this.listHead;
-    let string = '';
+    let string = "";
 
     if (current === null) {
       return string;
@@ -131,13 +131,14 @@ class LinkedList {
       string += `( ${current.value} ) -> `;
       current = current.nextNode;
     }
-    string += 'null';
+    
+    string += "null";
     return string;
   }
 
   insertAt(index, ...values) {
     if (index < 0 || index > this.size()) {
-      throw new RangeError('Index is out of bounds');
+      throw new RangeError("Index is out of bounds");
     }
 
     let previous = index === 0 ? null : this.at(index - 1);
@@ -157,30 +158,36 @@ class LinkedList {
   }
 
   removeAt(index) {
-    if (index < 0 || index > this.size()) {
-      throw new RangeError('Index is out of bounds');
+    if (index < 0 || index >= this.size()) {
+      throw new RangeError("Index is out of bounds");
+    }
+
+    const prev = index === 0 ? null : this.at(index - 1);
+    const next = this.at(index + 1) || null;
+
+    if (prev === null) {
+      this.pop();
+    } else {
+      prev.nextNode = next;
     }
   }
-
 }
 
 const list = new LinkedList();
 
-list.append('1');
-list.append('2');
-list.append('3');
+list.append("1");
+list.append("2");
+list.append("3");
 
-console.log('list:', list);
-console.log('head:', list.head())
-console.log('size:', list.size())
-console.log('tail:', list.tail())
-console.log('at:', list.at(0))
-console.log('contains:', list.contains('fish'))
-console.log('findIndex:', list.findIndex('leek'))
-console.log('toString:', list.toString())
-list.insertAt(1, '10')
-console.log('toString:', list.toString())
+console.log("list:", list);
+console.log("head:", list.head());
+console.log("size:", list.size());
+console.log("tail:", list.tail());
+console.log("at:", list.at(0));
+console.log("contains:", list.contains("fish"));
+console.log("findIndex:", list.findIndex("leek"));
+console.log("toString:", list.toString());
+list.removeAt(3);
+console.log("toString:", list.toString());
 
-
-
-console.log('done')
+console.log("done");
